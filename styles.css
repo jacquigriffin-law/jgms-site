@@ -142,10 +142,10 @@ img{max-width:100%;display:block}
 
 .brand{position:relative;flex-shrink:0;display:flex;align-items:center;gap:16px}
 .brand-mark{width:56px;height:56px;border-radius:14px;background:var(--navy);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;letter-spacing:2.5px;color:var(--gold);font-family:Georgia,'Times New Roman',serif;box-shadow:0 6px 20px rgba(18,38,63,.15)}
-.brand-text{display:flex;flex-direction:column;gap:3px}
-.brand-text strong{display:block;font-size:22px;letter-spacing:.2px;line-height:1.05;color:var(--navy);font-family:Georgia,'Times New Roman',serif;font-weight:600}
-.brand-text span{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1.8px;font-weight:600}
-.brand-text em{font-style:normal;font-size:11px;color:var(--blue);letter-spacing:1.2px;text-transform:uppercase;font-weight:500}
+.brand-text{display:flex;flex-direction:column;gap:2px}
+.brand-text strong{display:block;font-size:24px;letter-spacing:.2px;line-height:1.05;color:var(--navy);font-family:Georgia,'Times New Roman',serif;font-weight:700}
+.brand-text span{font-size:11px;color:var(--navy);text-transform:uppercase;letter-spacing:2.2px;font-weight:600;margin-bottom:4px}
+.brand-text em{font-style:normal;font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:none;font-weight:400}
 
 .nav-links{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
 .nav-links a{font-size:15px;font-weight:600;color:var(--navy);padding:8px 4px;transition:color .2s ease}
@@ -165,9 +165,9 @@ img{max-width:100%;display:block}
   .nav{flex-direction:column;align-items:flex-start;padding:20px 0 16px;gap:20px}
   .brand{gap:12px}
   .brand-mark{width:48px;height:48px;font-size:14px;border-radius:12px}
-  .brand-text strong{font-size:19px}
-  .brand-text span{font-size:11px;letter-spacing:1.5px}
-  .brand-text em{font-size:10px;letter-spacing:1px}
+  .brand-text strong{font-size:20px}
+  .brand-text span{font-size:10px;letter-spacing:2px;margin-bottom:3px}
+  .brand-text em{font-size:9px;letter-spacing:0.8px}
   .nav-links{gap:18px;flex-wrap:nowrap;overflow-x:auto;width:100%;padding:8px 0 4px;-webkit-overflow-scrolling:touch}
   .nav-links a{white-space:nowrap;font-size:15px;padding:10px 8px}
   .nav-links .btn{display:none}
