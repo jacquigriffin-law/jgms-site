@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISA Build Plan - Jacqui Griffin</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; margin: 0; padding: 15px; background: #f5f5f5; line-height: 1.4; }
+        h1 { text-align: center; color: #2c5aa0; margin-bottom: 20px; }
+        .summary { background: linear-gradient(135deg, #e7f3ff, #f0f8ff); padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #2c5aa0; }
+        table { width: 100%; border-collapse: collapse; background: white; margin: 20px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-radius: 6px; overflow: hidden; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #eee; }
+        th { background: #2c5aa0; color: white; font-weight: 600; }
+        .complete { background: #d4edda; }
+        .progress { background: #fff3cd; }
+        .urgent { background: #f8d7da; }
+        .checklist-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+        .checklist { background: white; border: 2px solid #2c5aa0; border-radius: 8px; padding: 20px; }
+        .checklist h3 { color: #2c5aa0; margin-top: 0; margin-bottom: 15px; }
+        .checklist-item { margin-bottom: 15px; padding: 10px; background: #f8f9fa; border-radius: 6px; }
+        .checklist-item input { margin-right: 10px; transform: scale(1.2); }
+        .checklist-item label { font-size: 14px; line-height: 1.4; cursor: pointer; }
+        .item-desc { color: #666; font-size: 12px; margin-top: 4px; }
+        .priority-high { color: #dc3545; font-weight: bold; }
+        .footer { text-align: center; margin-top: 30px; color: #666; font-size: 14px; background: white; padding: 20px; border-radius: 8px; }
+        .status-indicator { font-size: 12px; font-weight: 600; padding: 4px 8px; border-radius: 12px; white-space: nowrap; }
+        .status-complete { background: #d4edda; color: #155724; }
+        .status-moe { background: #fff3cd; color: #856404; }
+        .status-jacqui { background: #cce5ff; color: #004085; }
+        .status-pending { background: #f8f9fa; color: #6c757d; }
+        @media (max-width: 768px) { 
+            .checklist-grid { grid-template-columns: 1fr; }
+            body { padding: 10px; }
+            table { font-size: 12px; }
+            .status-indicator { font-size: 10px; padding: 2px 4px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>🏗️ ISA Build Plan - Jacqui Griffin Law Firm</h1>
+    
+    <div class="summary">
+        <strong>💰 Investment:</strong> Setup $10,497 + Annual $5,964 = <strong>$16,461 Year 1</strong><br>
+        <strong>🎯 Builder:</strong> Mohamed Dhaini (ISA) | <strong>📊 Target ROI:</strong> 3x minimum = <strong>$50,000+ value</strong><br>
+        <strong>💵 Revenue Recovery:</strong> NT Legal Aid ~$2K+, Duty audits $500-1K/mo, Time savings 400+ hours/year
+    </div>
+
+    <table>
+        <tr><th colspan="6">📅 Project Tasks - Dual Verification System</th></tr>
+        <tr><th style="width:10%">Week</th><th style="width:8%">Task #</th><th style="width:30%">Description</th><th style="width:20%">🔧 Moe's Column</th><th style="width:20%">📋 Jacqui's Column</th><th style="width:12%">✅ Status</th></tr>
+        
+        <tr>
+            <td rowspan="4"><strong>1-2</strong><br><small>Feb-Mar</small></td>
+            <td><strong>Infra</strong></td>
+            <td>Mac Mini + OpenClaw setup</td>
+            <td>
+                <input type="checkbox" id="moe-infra" style="margin-right: 6px;" onchange="updateStatus('infra')">
+                <small>System deployment</small>
+            </td>
+            <td>
+                <input type="checkbox" id="jacqui-infra" style="margin-right: 6px;" onchange="updateStatus('infra')">
+                <small>Verify & approve setup</small>
+            </td>
+            <td><span id="status-infra" class="status-indicator">⏳ Pending</span></td>
+        </tr>
+        <tr>
+            <td><strong>#3</strong></td>
+            <td>Morning brief: court matters</td>
+            <td>
+                <input type="checkbox" id="moe-court-brief" style="margin-right: 6px;">
+                <small>Build automation</small>
+            </td>
+            <td>
+                <input type="checkbox" id="jacqui-court-brief" style="margin-right: 6px;">
+                <small>Test & approve format</small>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>#4</strong></td>
+            <td>Morning brief: LEAP tasks</td>
+            <td>
+                <input type="checkbox" id="moe-leap-brief" style="margin-right: 6px;">
+                <small>LEAP integration</small>
+            </td>
+            <td>
+                <input type="checkbox" id="jacqui-leap-brief" style="margin-right: 6px;">
+                <small>Test daily briefings</small>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>#1</strong></td>
+            <td>Legal Aid portal monitoring</td>
+            <td>
+                <input type="checkbox" id="moe-legal-aid-mon" style="margin-right: 6px;">
+                <small>Portal automation</small>
+            </td>
+            <td>
+                <input type="checkbox" id="jacqui-legal-aid-mon" style="margin-right: 6px;">
+                <small>Set preferences & test</small>
+            </td>
+        </tr>
+        
+        <tr>
+            <td rowspan="5"><strong>3</strong><br><small>10-17 Mar</small></td>
+            <td><strong>#8</strong></td>
+            <td>Conflict check from phone</td>
+            <td>
+                <input type="checkbox" id="moe-conflict" style="margin-right: 6px;">
+                <small>Build mobile interface</small>
+            </td>
+            <td>
+                <input type="checkbox" id="jacqui-conflict" style="margin-right: 6px;">
+                <small>Test on phone</small>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>#18</strong></td>
+            <td>Auto-copy emails to LEAP</td>
+            <td>
+                <input type="checkbox" id="moe-email-leap" style="margin-right: 6px;">
+                <small>Email automation</small>
+            </td>
+            <td>
+                <input type="checkbox" id="jacqui-email-leap" style="margin-right: 6px;">
+                <small>Verify LEAP integration</small>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>#19</strong></td>
+            <td>Court doc filing automation</td>
+            <td>
+                <input type="checkbox" id="moe-court-filing" style="margin-right: 6px;">
+                <small>Build filing system</small>
+            </td>
+            <td>
+                <input type="checkbox" id="jacqui-court-filing" style="margin-right: 6px;">
+                <small>Validate organization</small>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>#7</strong></td>
+            <td>Legal aid duty billing audit</td>
+            <td>
+                <input type="checkbox" id="moe-duty-audit" style="margin-right: 6px;">
+                <small>Audit system built</small>
+            </td>
+            <td>
+                <input type="checkbox" id="jacqui-duty-audit" style="margin-right: 6px;">
+                <small><strong>Submit claims identified</strong></small>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>#5</strong></td>
+            <td>Draft agent lawyer emails</td>
+            <td>
+                <input type="checkbox" id="moe-draft-emails" style="margin-right: 6px;">
+                <small>Email templates</small>
+            </td>
+            <td>
+                <input type="checkbox" id="jacqui-draft-emails" style="margin-right: 6px;">
+                <small>Approve templates</small>
+            </td>
+        </tr>
+        
+        <tr>
+            <td rowspan="3"><strong>4</strong><br><small>17-24 Mar</small></td>
+            <td><strong>#14,35,36</strong></td>
+            <td>Email dispute resolution</td>
+            <td>
+                <input type="checkbox" id="moe-disputes" style="margin-right: 6px;">
+                <small>Resolution tools</small>
+            </td>
+            <td>
+                <input type="checkbox" id="jacqui-disputes" style="margin-right: 6px;">
+                <small>Disputes resolved</small>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>BONUS</strong></td>
+            <td>Mobile leads intake system</td>
+            <td>
+                <input type="checkbox" id="moe-leads" style="margin-right: 6px;">
+                <small>Build leads app</small>
+            </td>
+            <td>
+                <input type="checkbox" id="jacqui-leads" style="margin-right: 6px;">
+                <small>Test leads tracker</small>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>BONUS</strong></td>
+            <td>SMS forwarding integration</td>
+            <td>
+                <input type="checkbox" id="moe-sms" style="margin-right: 6px;">
+                <small>SMS automation</small>
+            </td>
+            <td>
+                <input type="checkbox" id="jacqui-sms" style="margin-right: 6px;">
+                <small>Test SMS routing</small>
+            </td>
+        </tr>
+        
+        <tr style="background: #fff3cd;">
+            <td rowspan="5"><strong>5</strong><br><small>24-31 Mar</small></td>
+            <td><strong>#33</strong></td>
+            <td>NT Legal Aid reconciliation</td>
+            <td>
+                <input type="checkbox" id="moe-reconciliation" style="margin-right: 6px;">
+                <small>Build reconciliation tool</small>
+            </td>
+            <td>
+                <input type="checkbox" id="jacqui-reconciliation" style="margin-right: 6px;">
+                <small><strong>Provide NAB statements</strong></small>
+            </td>
+        </tr>
+        <tr style="background: #fff3cd;">
+            <td><strong>#32</strong></td>
+            <td>NT Legal Aid billing automation</td>
+            <td>
+                <input type="checkbox" id="moe-billing" style="margin-right: 6px;">
+                <small>PDF form automation</small>
+            </td>
+            <td>
+                <input type="checkbox" id="jacqui-billing" style="margin-right: 6px;">
+                <small>Test billing flow</small>
+            </td>
+        </tr>
+        <tr style="background: #fff3cd;">
+            <td><strong>#6</strong></td>
+            <td>Conference scheduler</td>
+            <td>
+                <input type="checkbox" id="moe-scheduler" style="margin-right: 6px;">
+                <small>Build PDF extraction</small>
+            </td>
+            <td>
+                <input type="checkbox" id="jacqui-scheduler" style="margin-right: 6px;">
+                <small><strong>Provide test PDF</strong></small>
+            </td>
+        </tr>
+        <tr style="background: #fff3cd;">
+            <td><strong>#24</strong></td>
+            <td>Better chronologies</td>
+            <td>
+                <input type="checkbox" id="moe-chronologies" style="margin-right: 6px;">
+                <small>Template integration</small>
+            </td>
+            <td>
+                <input type="checkbox" id="jacqui-chronologies" style="margin-right: 6px;">
+                <small><strong>Send current templates</strong></small>
+            </td>
+        </tr>
+        <tr style="background: #fff3cd;">
+            <td><strong>#27</strong></td>
+            <td>Website consolidation</td>
+            <td>
+                <input type="checkbox" id="moe-website" style="margin-right: 6px;">
+                <small>Technical support</small>
+            </td>
+            <td>
+                <input type="checkbox" id="jacqui-website" style="margin-right: 6px;">
+                <small><strong>Lead Squarespace work</strong></small>
+            </td>
+        </tr>
+        
+        <tr style="background: #fee2e2;">
+            <td rowspan="3"><strong>6</strong><br><small>31 Mar-7 Apr</small></td>
+            <td><strong>#29</strong></td>
+            <td>MYOB BAS statements</td>
+            <td>
+                <input type="checkbox" id="moe-bas" style="margin-right: 6px;">
+                <small>BAS automation ready</small>
+            </td>
+            <td>
+                <input type="checkbox" id="jacqui-bas" style="margin-right: 6px;">
+                <small><strong>MYOB access (DUE 28 APR)</strong></small>
+            </td>
+        </tr>
+        <tr style="background: #fee2e2;">
+            <td><strong>#30</strong></td>
+            <td>Trust account reconciliation</td>
+            <td>
+                <input type="checkbox" id="moe-trust" style="margin-right: 6px;">
+                <small>Monthly automation</small>
+            </td>
+            <td>
+                <input type="checkbox" id="jacqui-trust" style="margin-right: 6px;">
+                <small>Monthly approval process</small>
+            </td>
+        </tr>
+        <tr style="background: #fee2e2;">
+            <td><strong>#31</strong></td>
+            <td>Professional indemnity form</td>
+            <td>
+                <input type="checkbox" id="moe-indemnity" style="margin-right: 6px;">
+                <small>Income data extraction</small>
+            </td>
+            <td>
+                <input type="checkbox" id="jacqui-indemnity" style="margin-right: 6px;">
+                <small>Submit annual form</small>
+            </td>
+        </tr>
+    </table>
+
+    <div class="checklist-grid">
+        <div class="checklist">
+            <h3>📋 JACQUI'S CHECKLIST - Week 5</h3>
+            
+            <div class="checklist-item">
+                <input type="checkbox" id="nab-statements">
+                <label for="nab-statements">
+                    <strong class="priority-high">🔴 NAB bank statements</strong>
+                    <div class="item-desc">→ NT Legal Aid reconciliation (~$2,000+ recovery potential)</div>
+                </label>
+            </div>
+            
+            <div class="checklist-item">
+                <input type="checkbox" id="chronology-templates">
+                <label for="chronology-templates">
+                    <strong>📄 Chronology templates</strong>
+                    <div class="item-desc">→ Send current care & family law templates to Moe</div>
+                </label>
+            </div>
+            
+            <div class="checklist-item">
+                <input type="checkbox" id="conference-pdf">
+                <label for="conference-pdf">
+                    <strong>📋 Conference PDF example</strong>
+                    <div class="item-desc">→ Sample with multiple lawyer availability dates</div>
+                </label>
+            </div>
+            
+            <div class="checklist-item">
+                <input type="checkbox" id="myob-prep">
+                <label for="myob-prep">
+                    <strong>💻 MYOB access preparation</strong>
+                    <div class="item-desc">→ Critical for BAS automation (due 28 April)</div>
+                </label>
+            </div>
+            
+            <div class="checklist-item">
+                <input type="checkbox" id="squarespace-work">
+                <label for="squarespace-work">
+                    <strong>🌐 Continue Squarespace work</strong>
+                    <div class="item-desc">→ Website consolidation (you're leading this)</div>
+                </label>
+            </div>
+        </div>
+
+        <div class="checklist">
+            <h3>🔧 MOE'S CHECKLIST - Week 5</h3>
+            
+            <div class="checklist-item">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                    <div style="flex: 1;">
+                        <strong class="priority-high">💰 NT Legal Aid reconciliation tool</strong>
+                        <div class="item-desc">→ Build payment matching & rejection detection system</div>
+                        <div style="font-size: 12px; color: #059669; margin-top: 4px;">
+                            <strong>Moe says:</strong> "Tool building, needs NAB statements"
+                        </div>
+                    </div>
+                    <div style="margin-left: 12px;">
+                        <label style="font-size: 11px; color: #6b7280; display: block;">Jacqui ✓</label>
+                        <input type="checkbox" id="jacqui-verify-reconciliation" style="margin-top: 2px;">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="checklist-item">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                    <div style="flex: 1;">
+                        <strong>📝 NT Legal Aid billing automation</strong>
+                        <div class="item-desc">→ PDF form automation & template system</div>
+                        <div style="font-size: 12px; color: #059669; margin-top: 4px;">
+                            <strong>Moe says:</strong> "Starting development"
+                        </div>
+                    </div>
+                    <div style="margin-left: 12px;">
+                        <label style="font-size: 11px; color: #6b7280; display: block;">Jacqui ✓</label>
+                        <input type="checkbox" id="jacqui-verify-billing" style="margin-top: 2px;">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="checklist-item">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                    <div style="flex: 1;">
+                        <strong>📅 Conference scheduler</strong>
+                        <div class="item-desc">→ PDF extraction & multi-lawyer diary sync tool</div>
+                        <div style="font-size: 12px; color: #059669; margin-top: 4px;">
+                            <strong>Moe says:</strong> "Building, needs test PDF"
+                        </div>
+                    </div>
+                    <div style="margin-left: 12px;">
+                        <label style="font-size: 11px; color: #6b7280; display: block;">Jacqui ✓</label>
+                        <input type="checkbox" id="jacqui-verify-scheduler" style="margin-top: 2px;">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="checklist-item">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                    <div style="flex: 1;">
+                        <strong>📋 Better chronologies system</strong>
+                        <div class="item-desc">→ Template integration & LEAP data extraction</div>
+                        <div style="font-size: 12px; color: #059669; margin-top: 4px;">
+                            <strong>Moe says:</strong> "Building, needs templates"
+                        </div>
+                    </div>
+                    <div style="margin-left: 12px;">
+                        <label style="font-size: 11px; color: #6b7280; display: block;">Jacqui ✓</label>
+                        <input type="checkbox" id="jacqui-verify-chronologies" style="margin-top: 2px;">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="checklist-item">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                    <div style="flex: 1;">
+                        <strong>🌐 Website technical support</strong>
+                        <div class="item-desc">→ JGMS platform migration assistance</div>
+                        <div style="font-size: 12px; color: #059669; margin-top: 4px;">
+                            <strong>Moe says:</strong> "Support available, Jacqui leading"
+                        </div>
+                    </div>
+                    <div style="margin-left: 12px;">
+                        <label style="font-size: 11px; color: #6b7280; display: block;">Jacqui ✓</label>
+                        <input type="checkbox" id="jacqui-verify-website" style="margin-top: 2px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: #f8d7da; border: 2px solid #dc3545; border-radius: 8px; padding: 20px; margin: 20px 0;">
+        <h3 style="color: #721c24; margin-top: 0;">⏳ NEXT WEEK (Week 6) - CRITICAL DEADLINES</h3>
+        <div class="checklist-grid">
+            <div>
+                <h4 style="color: #dc3545; margin-bottom: 15px;">📋 JACQUI'S WEEK 6 CHECKLIST</h4>
+                <div style="space-y: 10px;">
+                    <div style="margin-bottom: 10px;">
+                        <input type="checkbox" id="myob-access" style="margin-right: 8px;">
+                        <label for="myob-access"><strong>🔴 MYOB access</strong> → BAS preparation</label>
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <input type="checkbox" id="bas-review" style="margin-right: 8px;">
+                        <label for="bas-review"><strong>📊 BAS accuracy review</strong> → Final check before lodgement</label>
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <input type="checkbox" id="ato-lodgement" style="margin-right: 8px;">
+                        <label for="ato-lodgement"><strong>🏛️ ATO lodgement</strong> → Due 28 April (CRITICAL)</label>
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <input type="checkbox" id="trust-approval" style="margin-right: 8px;">
+                        <label for="trust-approval"><strong>✅ Trust reconciliation approval</strong> → Monthly compliance</label>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h4 style="color: #dc3545; margin-bottom: 15px;">🔧 MOE'S WEEK 6 CHECKLIST</h4>
+                <div>
+                    <div style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                        <span><strong>🔌 MYOB integration</strong> → Data extraction system</span>
+                        <input type="checkbox" id="jacqui-verify-myob" style="margin-left: 8px;" title="Jacqui verification">
+                    </div>
+                    <div style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                        <span><strong>⚙️ BAS automation</strong> → Form preparation system</span>
+                        <input type="checkbox" id="jacqui-verify-bas" style="margin-left: 8px;" title="Jacqui verification">
+                    </div>
+                    <div style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                        <span><strong>🏦 Trust reconciliation</strong> → Monthly automation workflow</span>
+                        <input type="checkbox" id="jacqui-verify-trust" style="margin-left: 8px;" title="Jacqui verification">
+                    </div>
+                    <div style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                        <span><strong>✨ Final system polish</strong> → Testing & refinement</span>
+                        <input type="checkbox" id="jacqui-verify-polish" style="margin-left: 8px;" title="Jacqui verification">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table>
+        <tr><th colspan="3">📊 Success Metrics & Performance Targets</th></tr>
+        <tr><th style="width:30%">Metric</th><th style="width:25%">Year 1 Target</th><th style="width:45%">Current Progress</th></tr>
+        <tr><td><strong>Revenue Recovery</strong></td><td>$5,000+ minimum</td><td>NT Legal Aid reconciliation ready (~$2,000+ identified)</td></tr>
+        <tr><td><strong>Time Savings</strong></td><td>400+ hours/year</td><td>Morning briefings, email automation, conflict checking operational</td></tr>
+        <tr><td><strong>Compliance</strong></td><td>100% on-time filing</td><td>BAS automation ready for 28 April deadline</td></tr>
+        <tr><td><strong>Return on Investment</strong></td><td>3x minimum ($50K+ value)</td><td>On track with completed automation + pending revenue recovery</td></tr>
+    </table>
+
+    <div class="footer">
+        <p><strong>Built by ISA (Intelligent Solutions Agency) - Mohamed Dhaini</strong></p>
+        <p>Last updated: Tuesday, 31 March 2026 | Generated by Xena AI Assistant</p>
+        <p><strong>Bookmark this page:</strong> https://jgms-site.vercel.app/build-plan</p>
+        <p><strong>Investment:</strong> $16,461 Year 1 → <strong>Target Return:</strong> $50,000+ value from automation + revenue recovery</p>
+    </div>
+
+    <script>
+        // Save checkbox states and update status indicators
+        function updateStatus(taskId) {
+            const moeBox = document.getElementById('moe-' + taskId);
+            const jacquiBox = document.getElementById('jacqui-' + taskId);
+            const statusSpan = document.getElementById('status-' + taskId);
+            
+            if (moeBox && jacquiBox && statusSpan) {
+                if (moeBox.checked && jacquiBox.checked) {
+                    statusSpan.textContent = '✅ Complete';
+                    statusSpan.className = 'status-indicator status-complete';
+                } else if (moeBox.checked) {
+                    statusSpan.textContent = '🔧 Moe Done';
+                    statusSpan.className = 'status-indicator status-moe';
+                } else if (jacquiBox.checked) {
+                    statusSpan.textContent = '📋 Jacqui Done';
+                    statusSpan.className = 'status-indicator status-jacqui';
+                } else {
+                    statusSpan.textContent = '⏳ Pending';
+                    statusSpan.className = 'status-indicator status-pending';
+                }
+            }
+        }
+
+        // Initialize checkboxes and status indicators
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                localStorage.setItem(this.id, this.checked);
+                
+                // Update status if this is a task checkbox
+                if (this.id.startsWith('moe-') || this.id.startsWith('jacqui-')) {
+                    const taskId = this.id.replace(/^(moe-|jacqui-)/, '');
+                    updateStatus(taskId);
+                }
+            });
+            
+            // Load saved state
+            const saved = localStorage.getItem(checkbox.id);
+            if (saved !== null) {
+                checkbox.checked = saved === 'true';
+            }
+        });
+
+        // Initialize all status indicators on page load
+        window.addEventListener('load', function() {
+            const taskIds = ['infra', 'court-brief', 'leap-brief', 'legal-aid-mon', 'conflict', 'email-leap', 'court-filing', 'duty-audit', 'draft-emails', 'disputes', 'leads', 'sms', 'reconciliation', 'billing', 'scheduler', 'chronologies', 'website', 'bas', 'trust', 'indemnity'];
+            taskIds.forEach(taskId => updateStatus(taskId));
+        });
+    </script>
+</body>
+</html>
