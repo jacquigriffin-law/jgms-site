@@ -28,6 +28,7 @@
         .status-moe { background: #fff3cd; color: #856404; }
         .status-jacqui { background: #cce5ff; color: #004085; }
         .status-pending { background: #f8f9fa; color: #6c757d; }
+        .status-cancelled { background: #f8d7da; color: #721c24; }
         @media (max-width: 768px) { 
             .checklist-grid { grid-template-columns: 1fr; }
             body { padding: 10px; }
@@ -46,8 +47,8 @@
     </div>
 
     <table>
-        <tr><th colspan="6">📅 Project Tasks - Dual Verification System</th></tr>
-        <tr><th style="width:10%">Week</th><th style="width:8%">Task #</th><th style="width:30%">Description</th><th style="width:20%">🔧 Moe's Column</th><th style="width:20%">📋 Jacqui's Column</th><th style="width:12%">✅ Status</th></tr>
+        <tr><th colspan="7">📅 Project Tasks - Dual Verification System</th></tr>
+        <tr><th style="width:9%">Week</th><th style="width:7%">Task #</th><th style="width:26%">Description</th><th style="width:18%">🔧 Moe's Column</th><th style="width:18%">📋 Jacqui's Column</th><th style="width:10%">❌ Cancel</th><th style="width:12%">✅ Status</th></tr>
         
         <tr>
             <td rowspan="4"><strong>1-2</strong><br><small>Feb-Mar</small></td>
@@ -60,6 +61,10 @@
             <td>
                 <input type="checkbox" id="jacqui-infra" style="margin-right: 6px;" onchange="updateStatus('infra')">
                 <small>Verify & approve setup</small>
+            </td>
+            <td>
+                <input type="checkbox" id="cancel-infra" style="margin-right: 6px;" onchange="updateStatus('infra')" title="Not proceeding with this task">
+                <small style="color: #dc3545;">Cancel</small>
             </td>
             <td><span id="status-infra" class="status-indicator status-pending">⏳ Pending</span></td>
         </tr>
@@ -74,6 +79,10 @@
                 <input type="checkbox" id="jacqui-court-brief" style="margin-right: 6px;" onchange="updateStatus('court-brief')">
                 <small>Test & approve format</small>
             </td>
+            <td>
+                <input type="checkbox" id="cancel-court-brief" style="margin-right: 6px;" onchange="updateStatus('court-brief')" title="Not proceeding with this task">
+                <small style="color: #dc3545;">Cancel</small>
+            </td>
             <td><span id="status-court-brief" class="status-indicator status-pending">⏳ Pending</span></td>
         </tr>
         <tr>
@@ -87,6 +96,10 @@
                 <input type="checkbox" id="jacqui-leap-brief" style="margin-right: 6px;" onchange="updateStatus('leap-brief')">
                 <small>Test daily briefings</small>
             </td>
+            <td>
+                <input type="checkbox" id="cancel-leap-brief" style="margin-right: 6px;" onchange="updateStatus('leap-brief')" title="Not proceeding with this task">
+                <small style="color: #dc3545;">Cancel</small>
+            </td>
             <td><span id="status-leap-brief" class="status-indicator status-pending">⏳ Pending</span></td>
         </tr>
         <tr>
@@ -99,6 +112,10 @@
             <td>
                 <input type="checkbox" id="jacqui-legal-aid-mon" style="margin-right: 6px;" onchange="updateStatus('legal-aid-mon')">
                 <small>Set preferences & test</small>
+            </td>
+            <td>
+                <input type="checkbox" id="cancel-legal-aid-mon" style="margin-right: 6px;" onchange="updateStatus('legal-aid-mon')" title="Not proceeding with this task">
+                <small style="color: #dc3545;">Cancel</small>
             </td>
             <td><span id="status-legal-aid-mon" class="status-indicator status-pending">⏳ Pending</span></td>
         </tr>
@@ -115,6 +132,10 @@
                 <input type="checkbox" id="jacqui-conflict" style="margin-right: 6px;" onchange="updateStatus('conflict')">
                 <small>Test on phone</small>
             </td>
+            <td>
+                <input type="checkbox" id="cancel-conflict" style="margin-right: 6px;" onchange="updateStatus('conflict')" title="Not proceeding with this task">
+                <small style="color: #dc3545;">Cancel</small>
+            </td>
             <td><span id="status-conflict" class="status-indicator status-pending">⏳ Pending</span></td>
         </tr>
         <tr>
@@ -127,6 +148,10 @@
             <td>
                 <input type="checkbox" id="jacqui-email-leap" style="margin-right: 6px;" onchange="updateStatus('email-leap')">
                 <small>Verify LEAP integration</small>
+            </td>
+            <td>
+                <input type="checkbox" id="cancel-email-leap" style="margin-right: 6px;" onchange="updateStatus('email-leap')" title="Not proceeding with this task">
+                <small style="color: #dc3545;">Cancel</small>
             </td>
             <td><span id="status-email-leap" class="status-indicator status-pending">⏳ Pending</span></td>
         </tr>
@@ -141,6 +166,10 @@
                 <input type="checkbox" id="jacqui-court-filing" style="margin-right: 6px;" onchange="updateStatus('court-filing')">
                 <small>Validate organization</small>
             </td>
+            <td>
+                <input type="checkbox" id="cancel-court-filing" style="margin-right: 6px;" onchange="updateStatus('court-filing')" title="Not proceeding with this task">
+                <small style="color: #dc3545;">Cancel</small>
+            </td>
             <td><span id="status-court-filing" class="status-indicator status-pending">⏳ Pending</span></td>
         </tr>
         <tr>
@@ -154,6 +183,10 @@
                 <input type="checkbox" id="jacqui-duty-audit" style="margin-right: 6px;" onchange="updateStatus('duty-audit')">
                 <small><strong>Submit claims identified</strong></small>
             </td>
+            <td>
+                <input type="checkbox" id="cancel-duty-audit" style="margin-right: 6px;" onchange="updateStatus('duty-audit')" title="Not proceeding with this task">
+                <small style="color: #dc3545;">Cancel</small>
+            </td>
             <td><span id="status-duty-audit" class="status-indicator status-pending">⏳ Pending</span></td>
         </tr>
         <tr>
@@ -166,6 +199,10 @@
             <td>
                 <input type="checkbox" id="jacqui-draft-emails" style="margin-right: 6px;" onchange="updateStatus('draft-emails')">
                 <small>Approve templates</small>
+            </td>
+            <td>
+                <input type="checkbox" id="cancel-draft-emails" style="margin-right: 6px;" onchange="updateStatus('draft-emails')" title="Not proceeding with this task">
+                <small style="color: #dc3545;">Cancel</small>
             </td>
             <td><span id="status-draft-emails" class="status-indicator status-pending">⏳ Pending</span></td>
         </tr>
@@ -182,6 +219,10 @@
                 <input type="checkbox" id="jacqui-disputes" style="margin-right: 6px;" onchange="updateStatus('disputes')">
                 <small>Disputes resolved</small>
             </td>
+            <td>
+                <input type="checkbox" id="cancel-disputes" style="margin-right: 6px;" onchange="updateStatus('disputes')" title="Not proceeding with this task">
+                <small style="color: #dc3545;">Cancel</small>
+            </td>
             <td><span id="status-disputes" class="status-indicator status-pending">⏳ Pending</span></td>
         </tr>
         <tr>
@@ -195,6 +236,10 @@
                 <input type="checkbox" id="jacqui-leads" style="margin-right: 6px;" onchange="updateStatus('leads')">
                 <small>Test leads tracker</small>
             </td>
+            <td>
+                <input type="checkbox" id="cancel-leads" style="margin-right: 6px;" onchange="updateStatus('leads')" title="Not proceeding with this task">
+                <small style="color: #dc3545;">Cancel</small>
+            </td>
             <td><span id="status-leads" class="status-indicator status-pending">⏳ Pending</span></td>
         </tr>
         <tr>
@@ -207,6 +252,10 @@
             <td>
                 <input type="checkbox" id="jacqui-sms" style="margin-right: 6px;" onchange="updateStatus('sms')">
                 <small>Test SMS routing</small>
+            </td>
+            <td>
+                <input type="checkbox" id="cancel-sms" style="margin-right: 6px;" onchange="updateStatus('sms')" title="Not proceeding with this task">
+                <small style="color: #dc3545;">Cancel</small>
             </td>
             <td><span id="status-sms" class="status-indicator status-pending">⏳ Pending</span></td>
         </tr>
@@ -223,6 +272,10 @@
                 <input type="checkbox" id="jacqui-reconciliation" style="margin-right: 6px;" onchange="updateStatus('reconciliation')">
                 <small><strong>Provide NAB statements</strong></small>
             </td>
+            <td>
+                <input type="checkbox" id="cancel-reconciliation" style="margin-right: 6px;" onchange="updateStatus('reconciliation')" title="Not proceeding with this task">
+                <small style="color: #dc3545;">Cancel</small>
+            </td>
             <td><span id="status-reconciliation" class="status-indicator status-pending">⏳ Pending</span></td>
         </tr>
         <tr style="background: #fff3cd;">
@@ -235,6 +288,10 @@
             <td>
                 <input type="checkbox" id="jacqui-billing" style="margin-right: 6px;" onchange="updateStatus('billing')">
                 <small>Test billing flow</small>
+            </td>
+            <td>
+                <input type="checkbox" id="cancel-billing" style="margin-right: 6px;" onchange="updateStatus('billing')" title="Not proceeding with this task">
+                <small style="color: #dc3545;">Cancel</small>
             </td>
             <td><span id="status-billing" class="status-indicator status-pending">⏳ Pending</span></td>
         </tr>
@@ -249,6 +306,10 @@
                 <input type="checkbox" id="jacqui-scheduler" style="margin-right: 6px;" onchange="updateStatus('scheduler')">
                 <small><strong>Provide test PDF</strong></small>
             </td>
+            <td>
+                <input type="checkbox" id="cancel-scheduler" style="margin-right: 6px;" onchange="updateStatus('scheduler')" title="Not proceeding with this task">
+                <small style="color: #dc3545;">Cancel</small>
+            </td>
             <td><span id="status-scheduler" class="status-indicator status-pending">⏳ Pending</span></td>
         </tr>
         <tr style="background: #fff3cd;">
@@ -262,6 +323,10 @@
                 <input type="checkbox" id="jacqui-chronologies" style="margin-right: 6px;" onchange="updateStatus('chronologies')">
                 <small><strong>Send current templates</strong></small>
             </td>
+            <td>
+                <input type="checkbox" id="cancel-chronologies" style="margin-right: 6px;" onchange="updateStatus('chronologies')" title="Not proceeding with this task">
+                <small style="color: #dc3545;">Cancel</small>
+            </td>
             <td><span id="status-chronologies" class="status-indicator status-pending">⏳ Pending</span></td>
         </tr>
         <tr style="background: #fff3cd;">
@@ -274,6 +339,10 @@
             <td>
                 <input type="checkbox" id="jacqui-website" style="margin-right: 6px;" onchange="updateStatus('website')">
                 <small><strong>Lead Squarespace work</strong></small>
+            </td>
+            <td>
+                <input type="checkbox" id="cancel-website" style="margin-right: 6px;" onchange="updateStatus('website')" title="Not proceeding with this task">
+                <small style="color: #dc3545;">Cancel</small>
             </td>
             <td><span id="status-website" class="status-indicator status-pending">⏳ Pending</span></td>
         </tr>
@@ -290,6 +359,10 @@
                 <input type="checkbox" id="jacqui-bas" style="margin-right: 6px;" onchange="updateStatus('bas')">
                 <small><strong>MYOB access (DUE 28 APR)</strong></small>
             </td>
+            <td>
+                <input type="checkbox" id="cancel-bas" style="margin-right: 6px;" onchange="updateStatus('bas')" title="Not proceeding with this task">
+                <small style="color: #dc3545;">Cancel</small>
+            </td>
             <td><span id="status-bas" class="status-indicator status-pending">⏳ Pending</span></td>
         </tr>
         <tr style="background: #fee2e2;">
@@ -303,6 +376,10 @@
                 <input type="checkbox" id="jacqui-trust" style="margin-right: 6px;" onchange="updateStatus('trust')">
                 <small>Monthly approval process</small>
             </td>
+            <td>
+                <input type="checkbox" id="cancel-trust" style="margin-right: 6px;" onchange="updateStatus('trust')" title="Not proceeding with this task">
+                <small style="color: #dc3545;">Cancel</small>
+            </td>
             <td><span id="status-trust" class="status-indicator status-pending">⏳ Pending</span></td>
         </tr>
         <tr style="background: #fee2e2;">
@@ -315,6 +392,10 @@
             <td>
                 <input type="checkbox" id="jacqui-indemnity" style="margin-right: 6px;" onchange="updateStatus('indemnity')">
                 <small>Submit annual form</small>
+            </td>
+            <td>
+                <input type="checkbox" id="cancel-indemnity" style="margin-right: 6px;" onchange="updateStatus('indemnity')" title="Not proceeding with this task">
+                <small style="color: #dc3545;">Cancel</small>
             </td>
             <td><span id="status-indemnity" class="status-indicator status-pending">⏳ Pending</span></td>
         </tr>
@@ -341,21 +422,34 @@
         function updateStatus(taskId) {
             const moeBox = document.getElementById('moe-' + taskId);
             const jacquiBox = document.getElementById('jacqui-' + taskId);
+            const cancelBox = document.getElementById('cancel-' + taskId);
             const statusSpan = document.getElementById('status-' + taskId);
             
-            if (moeBox && jacquiBox && statusSpan) {
-                if (moeBox.checked && jacquiBox.checked) {
-                    statusSpan.textContent = '✅ Complete';
-                    statusSpan.className = 'status-indicator status-complete';
-                } else if (moeBox.checked) {
-                    statusSpan.textContent = '🔧 Moe Done';
-                    statusSpan.className = 'status-indicator status-moe';
-                } else if (jacquiBox.checked) {
-                    statusSpan.textContent = '📋 Jacqui Done';
-                    statusSpan.className = 'status-indicator status-jacqui';
+            if (moeBox && jacquiBox && cancelBox && statusSpan) {
+                if (cancelBox.checked) {
+                    statusSpan.textContent = '❌ Cancelled';
+                    statusSpan.className = 'status-indicator status-cancelled';
+                    // Disable other checkboxes when cancelled
+                    moeBox.disabled = true;
+                    jacquiBox.disabled = true;
                 } else {
-                    statusSpan.textContent = '⏳ Pending';
-                    statusSpan.className = 'status-indicator status-pending';
+                    // Re-enable checkboxes if uncancelled
+                    moeBox.disabled = false;
+                    jacquiBox.disabled = false;
+                    
+                    if (moeBox.checked && jacquiBox.checked) {
+                        statusSpan.textContent = '✅ Complete';
+                        statusSpan.className = 'status-indicator status-complete';
+                    } else if (moeBox.checked) {
+                        statusSpan.textContent = '🔧 Moe Done';
+                        statusSpan.className = 'status-indicator status-moe';
+                    } else if (jacquiBox.checked) {
+                        statusSpan.textContent = '📋 Jacqui Done';
+                        statusSpan.className = 'status-indicator status-jacqui';
+                    } else {
+                        statusSpan.textContent = '⏳ Pending';
+                        statusSpan.className = 'status-indicator status-pending';
+                    }
                 }
             }
         }
@@ -366,8 +460,8 @@
                 localStorage.setItem(this.id, this.checked);
                 
                 // Update status if this is a task checkbox
-                if (this.id.startsWith('moe-') || this.id.startsWith('jacqui-')) {
-                    const taskId = this.id.replace(/^(moe-|jacqui-)/, '');
+                if (this.id.startsWith('moe-') || this.id.startsWith('jacqui-') || this.id.startsWith('cancel-')) {
+                    const taskId = this.id.replace(/^(moe-|jacqui-|cancel-)/, '');
                     updateStatus(taskId);
                 }
             });
