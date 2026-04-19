@@ -1,4 +1,9 @@
 {
   "version": 2,
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/build-plan", "destination": "/", "permanent": false },
+    { "source": "/build-plan-backup", "destination": "/", "permanent": false },
+    { "source": "/build-plan-with-status", "destination": "/", "permanent": false }
+  ]
 }
